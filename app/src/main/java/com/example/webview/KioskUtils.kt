@@ -18,7 +18,9 @@ class KioskUtils(private val context: Context) {
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun start(activity: Activity) {
-        activity.startLockTask()
+        if (dpm.isDeviceOwnerApp(context.packageName)){
+            activity.startLockTask()
+        }
     }
 
     @RequiresApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
